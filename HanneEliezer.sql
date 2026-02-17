@@ -57,3 +57,20 @@ FROM departements d
 JOIN regions r
 ON d.rid = r.rid
 WHERE r.nom = 'Centre-Val de Loire';
+
+/* Question 6*/
+
+CREATE TABLE voisins (
+  rid1 char(5),
+  rid2 char(5),
+  primary key (rid1, rid2),
+  foreign key (rid1) references regions,
+  foreign key (rid2) references regions
+);
+
+.import 'dept-files/voisins.csv' voisins
+
+/* Requête 5 (question 6)*/
+.output req5.txt
+SELECT COUNT(*)
+FROM voisins;
