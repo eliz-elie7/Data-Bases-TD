@@ -1,4 +1,6 @@
-/* Partie 1 du TD */
+/*-------------------------
+  Partie 1 du TD
+--------------------------*/
 
 .mode box
 PRAGMA foreign_keys = on;
@@ -27,3 +29,19 @@ CREATE TABLE departements (
 
 .import 'dept-files/departements.csv' departements
 
+/* Requête 1 (question 2)*/
+.output req1.txt
+SELECT code, nom
+FROM departements
+WHERE prefecture = 'Bourges';
+
+/* Requête 2 (question 3)*/
+.output req2.txt
+SELECT code, d.nom, prefecture, r.nom AS region
+FROM departements d
+JOIN regions r
+ON d.rid = r.rid;
+
+/* Requête 3 (question 4)*/
+.output req3.txt
+SELECT 
