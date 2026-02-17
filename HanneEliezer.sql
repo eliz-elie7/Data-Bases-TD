@@ -52,3 +52,8 @@ ORDER BY r.nom;
 
 /* Requête 4 (question 5)*/
 .output req4.txt
+SELECT code, d.nom, prefecture
+FROM departements d
+JOIN regions r
+ON d.rid = r.rid
+WHERE r.nom = 'Centre-Val de Loire';
