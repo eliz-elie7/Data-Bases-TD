@@ -1,47 +1,113 @@
-/*-------------------------
-  Partie 1 du TD
---------------------------*/
+/* Partie 1 du TD */
 
-.mode box
-PRAGMA foreign_keys = on;
+.mode table ; 
+PRAGMA foreign_keys = ON;
+drop table if exists voisins;
+drop table if exists departements;
+drop table if exists regions;
+drop table if exists zus;
+drop view if exists voisinsSymNoms;
+drop view if exists voisinsSym;
 
-DROP TABLE IF EXISTS regions;
-DROP TABLE IF EXISTS departements;
-
-
-CREATE TABLE regions (
-  rid char(5) primary key,
-  nom varchar(50),
-  chefLieu varchar(30)
+create table regions (
+    rid varchar(4) primary key,
+    nom varchar(60),
+    chef_lieu varchar (60)
 );
-
-CREATE TABLE departements (
-  code numeric(2) primary key,
-  nom varchar(30),
-  prefecture varchar(50),
-  rid char(5),
-  foreign key (rid) references regions
+create table departements (
+    code int primary key,
+    nom varchar(60),
+    prefecture varchar (60),
+    rid varchar(4),
+    foreign key (rid) references regions 
 );
-
+/* question 6 creation table */
+/* ici rid1 et rid2 font tous references à regions donc ce sont des clés 
+étrangeres  .Cependant on voit bien dans la construction de voisin que 
+les associations de rid1 et rid2 ( tuples) sont uniques .Par conséquent
+le couple (rid1,rid2) identifie de facon unique la table voisin d'ou ce
+ couple constitue une clé primaire composite .En plus de cela , une region
+ne doit pas etre voisine d'elle meme ,donc faudra gerer cete contrainte avec 
+le check pour eviter ce probleme et etre sur du resultat du count */
+create table voisins(
+    rid1 varchar(4),
+    rid2 varchar(4),
+    primary key(rid1,rid2),
+    foreign key (rid1) references regions,
+    foreign key (rid2) references regions,
+    check (rid1 != rid2)
+);
+/*question 9*/
+create table zus(
+    departements varchar(60) ,
+    commune varchar(60),
+    quartier varchar(60),
+    foreign key (departements) references departements,
+    );
+/* import des files csv pour populer */
 .separator ','
+.import 'regions.csv' regions
+.import 'departements.csv'  departements
+.import 'voisins.csv' voisins
 
-.import 'dept-files/regions.csv' regions
+/* question 2 */
+select code , nom 
+from departements 
+where prefecture = 'Bourges';
+/* question 3 */
+select code ,d.nom as departement ,prefecture ,r.nom as region 
+from regions r ,departements d
+where r.rid=d.rid 
+group by code ;
+/* question 4 */
+select r.nom as region ,chef_lieu , code,d.nom as departement ,prefecture 
+from regions r ,departements d
+where r.rid=d.rid
+order by r.nom asc ;
+/* question 5 */
+select code , d.nom as departement ,prefecture
+from regions r ,departements d
+where r.rid=d.rid and r.nom='Centre-Val de Loire';
+/* question 6 */
+select count(*) as nombre_total_tuples
+from voisins v1 ;
 
-.import 'dept-files/departements.csv' departements
+/* question 7 
+Dans la table , on remarque que les couples de voisins ne sont pas symetriques
+(pour chaque tuple (rid1,rid2) il n'y a pas de tuple (rid2,rid1) associés )
+*/
+create view voisinsSym as 
+select rid1, rid2 
+from voisins
+union
+select rid2 ,rid1
+from voisins ;
+select count(*) as nombre_total_tuples_symetriques
+from voisinsSym ;
+/*le nombre de tuples a doublé (46 tuples) par rapport a la question
+precedente (23 tuples) .Ceci est du àl'ajout des tuples symétriques 
+dans la vue voisinsSym qui contient maintenant (rid1,rid2) et (rid2,rid1) */
+select * from voisinsSym ;
+create view voisinsSymNoms as 
+select r1.nom as region1 ,r2.nom as region2
+from voisinsSym v,regions r1,regions r2 
+where r1.rid=v.rid1 and r2.rid=v.rid2;
+select * from voisinsSymNoms ;
 
-/* Requête 1 (question 2)*/
-.output req1.txt
-SELECT code, nom
-FROM departements
-WHERE prefecture = 'Bourges';
+/* question 8 */
+select v.region1 ,count(*) as nombre_voisins
+from voisinsSymNoms v, regions r 
+where r.nom=v.region1 
+group by v.region1 
+union 
+select r1.nom  ,0 as nombre_voisins
+from regions r1
+where r1.nom not in (select region1 from voisinsSymNoms)
+order by count(*) desc;
 
-/* Requête 2 (question 3)*/
-.output req2.txt
-SELECT code, d.nom, prefecture, r.nom AS region
-FROM departements d
-JOIN regions r
-ON d.rid = r.rid;
-
-/* Requête 3 (question 4)*/
-.output req3.txt
-SELECT 
+/*question 9
+ces données sous forme de page html avec un tableau excell sont brutes .
+elles sont pas bien structurées et seront difficiles a manipuler au
+ niveau de notre base de dpnnées pour faire des requetes et analyses .
+ Il faudra les epurer et ls structurer pour les rendre facilement exploitables .
+ */
