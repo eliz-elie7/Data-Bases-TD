@@ -44,4 +44,4 @@ ON d.rid = r.rid;
 
 /* Requête 3 (question 4)*/
 .output req3.txt
-SELECT 
+SELECT code, nom
