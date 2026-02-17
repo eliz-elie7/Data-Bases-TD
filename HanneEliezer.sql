@@ -44,4 +44,11 @@ ON d.rid = r.rid;
 
 /* Requête 3 (question 4)*/
 .output req3.txt
-SELECT code, nom
+SELECT r.nom AS region, chefLieu, code, d.nom AS departement, prefecture
+FROM regions r
+JOIN departements d
+ON r.rid = d.rid
+ORDER BY r.nom;
+
+/* Requête 4 (question 5)*/
+.output req4.txt
