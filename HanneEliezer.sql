@@ -1,6 +1,6 @@
 /* Partie 1 du TD */
 
-.mode table ; 
+.mode table 
 PRAGMA foreign_keys = ON;
 drop table if exists voisins;
 drop table if exists departements;
@@ -16,7 +16,7 @@ create table regions (
 );
 create table departements (
     code int primary key,
-    nom varchar(60),
+    nom varchar(60) unique,
     prefecture varchar (60),
     rid varchar(4),
     foreign key (rid) references regions 
@@ -37,19 +37,27 @@ create table voisins(
     foreign key (rid2) references regions,
     check (rid1 != rid2)
 );
-/*question 9*/
+/*question 9 pour respecter la contrainte de foreign key pour departement 
+qui se refere à nom dans la table  departements , on ajoute la contrainte unique à nom   */
 create table zus(
-    departements varchar(60) ,
+    departement varchar(60) ,
     commune varchar(60),
     quartier varchar(60),
-    foreign key (departements) references departements,
+    primary key (departement,commune,quartier),
+    foreign key (departement) references departements(nom)
     );
+
+
 /* import des files csv pour populer */
 .separator ','
 .import 'regions.csv' regions
 .import 'departements.csv'  departements
 .import 'voisins.csv' voisins
 
+.separator ';'
+.import 'zus.csv' zus 
+
+/* 
 /* question 2 */
 select code , nom 
 from departements 
@@ -111,3 +119,8 @@ elles sont pas bien structurées et seront difficiles a manipuler au
  niveau de notre base de dpnnées pour faire des requetes et analyses .
  Il faudra les epurer et ls structurer pour les rendre facilement exploitables .
  */
+ */
+ select quartier,commune , count(*) as nombre_quartier_zus , count(*) as nombre_commune_zus
+ from zus s
+ group by quartier,commune
+ having nombre_quartier_zus > 1 and nombre_commune_zus > 1;
