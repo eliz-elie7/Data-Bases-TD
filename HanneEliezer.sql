@@ -94,11 +94,8 @@ CREATE VIEW voisinsSymNoms AS
 SELECT r1.nom AS region, r2.nom AS voisines
 FROM voisinsSym v, regions r1, regions r2
 WHERE v.rid1 = r1.rid AND v.rid2 = r2.rid;
-SELECT nom
-FROM regions
-UNION
-SELECT IFNULL(COUNT(vS.voisines), 0) AS nbVoisins
-FROM regions r, voisinsSymNoms vS
-WHERE r.nom = vS.region
-GROUP BY region
+SELECT r.nom, COUNT(vs.voisines) AS nbVoisins
+FROM  regions r
+LEFT JOIN voisinsSymNoms vs ON r.nom = vs.region
+GROUP BY r.nom
 ORDER BY nbVoisins DESC;
