@@ -99,3 +99,20 @@ FROM  regions r
 LEFT JOIN voisinsSymNoms vs ON r.nom = vs.region
 GROUP BY r.nom
 ORDER BY nbVoisins DESC;
+
+/* Question 9*/
+DROP TABLE IF EXISTS zus;
+CREATE TABLE zus (
+  departement char(50),
+  commune char(50),
+  quartier char(50),
+  primary key (departement, commune, quartier),
+  foreign key (departement) references departements(nom)
+);
+
+.separator ';'
+
+.import 'dept-files/zus.csv' zus
+
+/* Requête 8 (question 10)*/
+.output 'res/req8.txt'
