@@ -59,31 +59,37 @@ create table zus(
 
 
 /* question 2 */
+/*
 select code , nom 
 from departements 
-where prefecture = 'Bourges';
+where prefecture = 'Bourges';   */
 /* question 3 */
+/*
 select code ,d.nom as departement ,prefecture ,r.nom as region 
 from regions r ,departements d
 where r.rid=d.rid 
-group by code ;
+group by code ;   */
 /* question 4 */
+/*
 select r.nom as region ,chef_lieu , code,d.nom as departement ,prefecture 
 from regions r ,departements d
 where r.rid=d.rid
-order by r.nom asc ;
+order by r.nom asc ;  */
 /* question 5 */
+/*
 select code , d.nom as departement ,prefecture
 from regions r ,departements d
-where r.rid=d.rid and r.nom='Centre-Val de Loire';
+where r.rid=d.rid and r.nom='Centre-Val de Loire';  */
 /* question 6 */
+/*
 select count(*) as nombre_total_tuples
-from voisins v1 ;
+from voisins v1 ;  */
 
 /* question 7 
 Dans la table , on remarque que les couples de voisins ne sont pas symetriques
 (pour chaque tuple (rid1,rid2) il n'y a pas de tuple (rid2,rid1) associés )
 */
+/*
 create view voisinsSym as 
 select rid1, rid2 
 from voisins
@@ -91,18 +97,20 @@ union
 select rid2 ,rid1
 from voisins ;
 select count(*) as nombre_total_tuples_symetriques
-from voisinsSym ;
+from voisinsSym ;    */
 /*le nombre de tuples a doublé (46 tuples) par rapport a la question
 precedente (23 tuples) .Ceci est du àl'ajout des tuples symétriques 
 dans la vue voisinsSym qui contient maintenant (rid1,rid2) et (rid2,rid1) */
+/*
 select * from voisinsSym ;
 create view voisinsSymNoms as 
 select r1.nom as region1 ,r2.nom as region2
 from voisinsSym v,regions r1,regions r2 
 where r1.rid=v.rid1 and r2.rid=v.rid2;
-select * from voisinsSymNoms ;
+select * from voisinsSymNoms ;   */
 
 /* question 8 */
+/*
 select v.region1 ,count(*) as nombre_voisins
 from voisinsSymNoms v, regions r 
 where r.nom=v.region1 
@@ -111,7 +119,7 @@ union
 select r1.nom  ,0 as nombre_voisins
 from regions r1
 where r1.nom not in (select region1 from voisinsSymNoms)
-order by count(*) desc;
+order by count(*) desc;  */
 
 /*question 9
 ces données sous forme de page html avec un tableau excell sont brutes .
