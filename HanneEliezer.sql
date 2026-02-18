@@ -8,6 +8,7 @@ drop table if exists regions;
 drop table if exists zus;
 drop view if exists voisinsSymNoms;
 drop view if exists voisinsSym;
+drop view if exists zusCommunePrefecture;
 
 create table regions (
     rid varchar(4) primary key,
@@ -144,8 +145,35 @@ et en plus cela n'altere en rien le principe d'unicité des tuples (avec notre c
  where commune like '%(%)%';
 
 /*question 11*/
-create view zusCommunePrefcture as 
-select departement , commune ,quartier 
+create view zusCommunePrefecture as 
+select z.departement , z.commune ,z.quartier 
 from zus z ,departements d
-where z.departement=d.nom and z.commune like '%'||d.prefecture||'%';
-select * from zusCommunePrefcture ;
+where z.departement=d.nom  /* faudra s'assurer que le nom de la commune est dans la prefecture et vice versa pour etre exhaustive*/
+    and (z.commune like '%'||d.prefecture||'%' or d.prefecture like '%'||z.commune||'%') ;
+select * from zusCommunePrefecture ;
+select count(*) as nb_communes_total ,'total'
+from zus 
+union 
+select count(*) as nb_communes_prefecture ,'oui'
+from zusCommunePrefecture
+where commune in (select commune from zusCommunePrefcture)
+union
+select count(*) as nb_communes_non_prefecture ,'non'
+from zus z
+where not exists (
+    select *
+    from zusCommunePrefecture v
+    where v.departement = z.departement  
+      and v.commune = z.commune    
+      and v.quartier = z.quartier   );
+
+/*question 12*/
+select departement ,r.nom as region , count(*) as nombre_zus
+from zus z ,regions r ,departements d
+where z.departement=d.nom  and d.rid=r.rid
+group by departement
+union 
+select d.nom ,r.nom as region , 0 as nombre_zus
+from departements d , regions r
+where d.rid=r.rid and d.nom not in (select departement from zus)
+order by nombre_zus desc ;
