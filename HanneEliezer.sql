@@ -57,7 +57,7 @@ create table zus(
 .separator ';'
 .import 'zus.csv' zus 
 
-/* 
+
 /* question 2 */
 select code , nom 
 from departements 
@@ -119,8 +119,25 @@ elles sont pas bien structurées et seront difficiles a manipuler au
  niveau de notre base de dpnnées pour faire des requetes et analyses .
  Il faudra les epurer et ls structurer pour les rendre facilement exploitables .
  */
- */
- select quartier,commune , count(*) as nombre_quartier_zus , count(*) as nombre_commune_zus
+ /*question 10 
+ ce stockage de données est ambigue et non structuré .Cela ne nous facilite pas
+l'exploitation des données pour les manipuler .En plus on sait meme pas quels sont
+les autres departements auxquels ces quartiers et communes se rattachent encore (associés).
+Il faudra sortir et aller voire au niveau de la table departements pour savoir
+(requete difficile avec les jointures).on note aussi la violation du principe d'atomicité
+(le champ commune doit etre indivisible ).
+comment j'aurais fait? j'allais scinder la ligne en 2 l'une avec son departement sa commune
+et le meme quartier de memem que l'autre : (Essonne, "Massy", "Le Grand Ensemble")
+et (Hauts-de-Seine, "Antony", "Le Grand Ensemble").ceci etant dit , ces cas sont deja peu nombreux 
+et en plus cela n'altere en rien le principe d'unicité des tuples (avec notre clé primaire composite)
+ tout en repectant l'atomicité  */
+ select *
  from zus s
- group by quartier,commune
- having nombre_quartier_zus > 1 and nombre_commune_zus > 1;
+ where commune like '%(%)%';
+
+/*question 11*/
+create view zusCommunePrefcture as 
+select departement , commune ,quartier 
+from zus z ,departements d
+where z.departement=d.nom and z.commune like '%'||d.prefecture||'%';
+select * from zusCommunePrefcture ;
