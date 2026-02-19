@@ -16,8 +16,8 @@ CREATE TABLE regions (
 );
 
 CREATE TABLE departements (
-  code numeric(2) primary key,
-  nom varchar(30),
+  code varchar(3) primary key,
+  nom varchar(50) UNIQUE,
   prefecture varchar(50),
   rid char(5),
   foreign key (rid) references regions
@@ -84,7 +84,7 @@ FROM voisins
 UNION
 SELECT rid2, rid1
 FROM voisins;
-SELECT COUNT(*)
+SELECT COUNT(*) AS nbVoisinsSym
 FROM voisinsSym;
 
 /* Requête 7 (question 8)*/
@@ -103,9 +103,9 @@ ORDER BY nbVoisins DESC;
 /* Question 9*/
 DROP TABLE IF EXISTS zus;
 CREATE TABLE zus (
-  departement char(50),
-  commune char(50),
-  quartier char(50),
+  departement varchar(50),
+  commune varchar(50),
+  quartier varchar(50),
   primary key (departement, commune, quartier),
   foreign key (departement) references departements(nom)
 );
@@ -116,3 +116,28 @@ CREATE TABLE zus (
 
 /* Requête 8 (question 10)*/
 .output 'res/req8.txt'
+SELECT *
+FROM zus
+WHERE commune LIKE '%(%)%';
+
+/* Requête 9 (question 11)*/
+.output 'res/req9.txt'
+DROP VIEW IF EXISTS ZusComPrefDep;
+CREATE VIEW ZusComPrefDep AS
+SELECT *
+FROM zus z
+JOIN departements d ON z.departement = d.nom
+WHERE z.commune = d.prefecture;
+SELECT
+(SELECT COUNT(*) FROM Zus) AS Total,
+(SELECT COUNT(*) FROM ZusComPrefDep) AS nbZusComInPref,
+(SELECT COUNT(*) FROM Zus) - (SELECT COUNT(*) FROM ZusComPrefDep) AS nbZUSNotInPref;
+
+/* Requête 10 (question 12)*/
+.output 'res/req10.txt'
+SELECT d.nom AS departement, r.nom AS region, COUNT(z.departement) AS nbZus
+FROM departements d
+LEFT JOIN regions r ON d.rid = r.rid
+LEFT JOIN zus z ON d.nom = z.departement
+GROUP BY d.nom
+ORDER BY nbZus DESC;

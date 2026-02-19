@@ -1,0 +1,105 @@
+┌────────────────────────────┬────────────────┬──────┬─────────────────────────┬──────────────────────┐
+│           region           │    chefLieu    │ code │       departement       │      prefecture      │
+├────────────────────────────┼────────────────┼──────┼─────────────────────────┼──────────────────────┤
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 01   │ Ain                     │ Bourg-en-Bresse      │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 03   │ Allier                  │ Moulins              │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 07   │ Ardèche                 │ Privas               │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 15   │ Cantal                  │ Aurillac             │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 26   │ Drôme                   │ Valence              │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 38   │ Isère                   │ Grenoble             │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 42   │ Loire                   │ Saint-Étienne        │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 43   │ Haute-Loire             │ Le Puy-en-Velay      │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 63   │ Puy-de-Dôme             │ Clermont-Ferrand     │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 69   │ Rhône                   │ Lyon                 │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 73   │ Savoie                  │ Chambéry             │
+│ Auvergne-Rhône-Alpes       │ Lyon           │ 74   │ Haute-Savoie            │ Annecy               │
+│ Bourgogne-Franche-Comté    │ Dijon          │ 21   │ Côte-d'Or               │ Dijon                │
+│ Bourgogne-Franche-Comté    │ Dijon          │ 25   │ Doubs                   │ Besançon             │
+│ Bourgogne-Franche-Comté    │ Dijon          │ 39   │ Jura                    │ Lons-le-Saunier      │
+│ Bourgogne-Franche-Comté    │ Dijon          │ 58   │ Nièvre                  │ Nevers               │
+│ Bourgogne-Franche-Comté    │ Dijon          │ 70   │ Haute-Saône             │ Vesoul               │
+│ Bourgogne-Franche-Comté    │ Dijon          │ 71   │ Saône-et-Loire          │ Mâcon                │
+│ Bourgogne-Franche-Comté    │ Dijon          │ 89   │ Yonne                   │ Auxerre              │
+│ Bourgogne-Franche-Comté    │ Dijon          │ 90   │ Territoire de Belfort   │ Belfort              │
+│ Bretagne                   │ Rennes         │ 22   │ Côtes-d'Armor           │ Saint-Brieuc         │
+│ Bretagne                   │ Rennes         │ 29   │ Finistère               │ Quimper              │
+│ Bretagne                   │ Rennes         │ 35   │ Ille-et-Vilaine         │ Rennes               │
+│ Bretagne                   │ Rennes         │ 56   │ Morbihan                │ Vannes               │
+│ Centre-Val de Loire        │ Orléans        │ 18   │ Cher                    │ Bourges              │
+│ Centre-Val de Loire        │ Orléans        │ 28   │ Eure-et-Loir            │ Chartres             │
+│ Centre-Val de Loire        │ Orléans        │ 36   │ Indre                   │ Châteauroux          │
+│ Centre-Val de Loire        │ Orléans        │ 37   │ Indre-et-Loire          │ Tours                │
+│ Centre-Val de Loire        │ Orléans        │ 41   │ Loir-et-Cher            │ Blois                │
+│ Centre-Val de Loire        │ Orléans        │ 45   │ Loiret                  │ Orléans              │
+│ Corse                      │ Ajaccio        │ 2A   │ Corse-du-Sud            │ Ajaccio              │
+│ Corse                      │ Ajaccio        │ 2B   │ Haute-Corse             │ Bastia               │
+│ Grand Est                  │ Strasbourg     │ 08   │ Ardennes                │ Charleville-Mézières │
+│ Grand Est                  │ Strasbourg     │ 10   │ Aube                    │ Troyes               │
+│ Grand Est                  │ Strasbourg     │ 51   │ Marne                   │ Châlons-en-Champagne │
+│ Grand Est                  │ Strasbourg     │ 52   │ Haute-Marne             │ Chaumont             │
+│ Grand Est                  │ Strasbourg     │ 54   │ Meurthe-et-Moselle      │ Nancy                │
+│ Grand Est                  │ Strasbourg     │ 55   │ Meuse                   │ Bar-le-Duc           │
+│ Grand Est                  │ Strasbourg     │ 57   │ Moselle                 │ Metz                 │
+│ Grand Est                  │ Strasbourg     │ 67   │ Bas-Rhin                │ Strasbourg           │
+│ Grand Est                  │ Strasbourg     │ 68   │ Haut-Rhin               │ Colmar               │
+│ Grand Est                  │ Strasbourg     │ 88   │ Vosges                  │ Épinal               │
+│ Guadeloupe                 │ Basse-Terre    │ 971  │ Guadeloupe              │ Basse-Terre          │
+│ Guyane                     │ Cayenne        │ 973  │ Guyane                  │ Cayenne              │
+│ Hauts-de-France            │ Lille          │ 02   │ Aisne                   │ Laon                 │
+│ Hauts-de-France            │ Lille          │ 59   │ Nord                    │ Lille                │
+│ Hauts-de-France            │ Lille          │ 60   │ Oise                    │ Beauvais             │
+│ Hauts-de-France            │ Lille          │ 62   │ Pas-de-Calais           │ Arras                │
+│ Hauts-de-France            │ Lille          │ 80   │ Somme                   │ Amiens               │
+│ Ile-de-France              │ Paris          │ 75   │ Paris                   │ Paris                │
+│ Ile-de-France              │ Paris          │ 77   │ Seine-et-Marne          │ Melun                │
+│ Ile-de-France              │ Paris          │ 78   │ Yvelines                │ Versailles           │
+│ Ile-de-France              │ Paris          │ 91   │ Essonne                 │ Évry-Courcouronnes   │
+│ Ile-de-France              │ Paris          │ 92   │ Hauts-de-Seine          │ Nanterre             │
+│ Ile-de-France              │ Paris          │ 93   │ Seine-Saint-Denis       │ Bobigny              │
+│ Ile-de-France              │ Paris          │ 94   │ Val-de-Marne            │ Créteil              │
+│ Ile-de-France              │ Paris          │ 95   │ Val-d'Oise              │ Cergy-Pontoise       │
+│ La Réunion                 │ Saint-Denis    │ 974  │ La Réunion              │ Saint-Denis          │
+│ Martinique                 │ Fort-de-France │ 972  │ Martinique              │ Fort-de-France       │
+│ Mayotte                    │ Mamoudzou      │ 976  │ Mayotte                 │ Mamoudzou            │
+│ Normandie                  │ Rouen          │ 14   │ Calvados                │ Caen                 │
+│ Normandie                  │ Rouen          │ 27   │ Eure                    │ Évreux               │
+│ Normandie                  │ Rouen          │ 50   │ Manche                  │ Saint-Lô             │
+│ Normandie                  │ Rouen          │ 61   │ Orne                    │ Alençon              │
+│ Normandie                  │ Rouen          │ 76   │ Seine-Maritime          │ Rouen                │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 16   │ Charente                │ Angoulême            │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 17   │ Charente-Maritime       │ La Rochelle          │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 19   │ Corrèze                 │ Tulle                │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 23   │ Creuse                  │ Guéret               │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 24   │ Dordogne                │ Périgueux            │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 33   │ Gironde                 │ Bordeaux             │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 40   │ Landes                  │ Mont-de-Marsan       │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 47   │ Lot-et-Garonne          │ Agen                 │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 64   │ Pyrénées-Atlantiques    │ Pau                  │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 79   │ Deux-Sèvres             │ Niort                │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 86   │ Vienne                  │ Poitiers             │
+│ Nouvelle-Aquitaine         │ Bordeaux       │ 87   │ Haute-Vienne            │ Limoges              │
+│ Occitanie                  │ Toulouse       │ 09   │ Ariège                  │ Foix                 │
+│ Occitanie                  │ Toulouse       │ 11   │ Aude                    │ Carcassonne          │
+│ Occitanie                  │ Toulouse       │ 12   │ Aveyron                 │ Rodez                │
+│ Occitanie                  │ Toulouse       │ 30   │ Gard                    │ Nîmes                │
+│ Occitanie                  │ Toulouse       │ 31   │ Haute-Garonne           │ Toulouse             │
+│ Occitanie                  │ Toulouse       │ 32   │ Gers                    │ Auch                 │
+│ Occitanie                  │ Toulouse       │ 34   │ Hérault                 │ Montpellier          │
+│ Occitanie                  │ Toulouse       │ 46   │ Lot                     │ Cahors               │
+│ Occitanie                  │ Toulouse       │ 48   │ Lozère                  │ Mende                │
+│ Occitanie                  │ Toulouse       │ 65   │ Hautes-Pyrénées         │ Tarbes               │
+│ Occitanie                  │ Toulouse       │ 66   │ Pyrénées-Orientales     │ Perpignan            │
+│ Occitanie                  │ Toulouse       │ 81   │ Tarn                    │ Albi                 │
+│ Occitanie                  │ Toulouse       │ 82   │ Tarn-et-Garonne         │ Montauban            │
+│ Pays de la Loire           │ Nantes         │ 44   │ Loire-Atlantique        │ Nantes               │
+│ Pays de la Loire           │ Nantes         │ 49   │ Maine-et-Loire          │ Angers               │
+│ Pays de la Loire           │ Nantes         │ 53   │ Mayenne                 │ Laval                │
+│ Pays de la Loire           │ Nantes         │ 72   │ Sarthe                  │ Le Mans              │
+│ Pays de la Loire           │ Nantes         │ 85   │ Vendée                  │ La Roche-sur-Yon     │
+│ Provence-Alpes-Côte d'Azur │ Marseille      │ 04   │ Alpes-de-Haute-Provence │ Digne-les-Bains      │
+│ Provence-Alpes-Côte d'Azur │ Marseille      │ 05   │ Hautes-Alpes            │ Gap                  │
+│ Provence-Alpes-Côte d'Azur │ Marseille      │ 06   │ Alpes-Maritimes         │ Nice                 │
+│ Provence-Alpes-Côte d'Azur │ Marseille      │ 13   │ Bouches-du-Rhône        │ Marseille            │
+│ Provence-Alpes-Côte d'Azur │ Marseille      │ 83   │ Var                     │ Toulon               │
+│ Provence-Alpes-Côte d'Azur │ Marseille      │ 84   │ Vaucluse                │ Avignon              │
+└────────────────────────────┴────────────────┴──────┴─────────────────────────┴──────────────────────┘

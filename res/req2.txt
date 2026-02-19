@@ -1,15 +1,15 @@
 ┌──────┬─────────────────────────┬──────────────────────┬────────────────────────────┐
-│ code │           nom           │      prefecture      │            nom             │
+│ code │           nom           │      prefecture      │           region           │
 ├──────┼─────────────────────────┼──────────────────────┼────────────────────────────┤
-│ 1    │ Ain                     │ Bourg-en-Bresse      │ Auvergne-Rhône-Alpes       │
-│ 2    │ Aisne                   │ Laon                 │ Hauts-de-France            │
-│ 3    │ Allier                  │ Moulins              │ Auvergne-Rhône-Alpes       │
-│ 4    │ Alpes-de-Haute-Provence │ Digne-les-Bains      │ Provence-Alpes-Côte d'Azur │
-│ 5    │ Hautes-Alpes            │ Gap                  │ Provence-Alpes-Côte d'Azur │
-│ 6    │ Alpes-Maritimes         │ Nice                 │ Provence-Alpes-Côte d'Azur │
-│ 7    │ Ardèche                 │ Privas               │ Auvergne-Rhône-Alpes       │
-│ 8    │ Ardennes                │ Charleville-Mézières │ Grand Est                  │
-│ 9    │ Ariège                  │ Foix                 │ Occitanie                  │
+│ 01   │ Ain                     │ Bourg-en-Bresse      │ Auvergne-Rhône-Alpes       │
+│ 02   │ Aisne                   │ Laon                 │ Hauts-de-France            │
+│ 03   │ Allier                  │ Moulins              │ Auvergne-Rhône-Alpes       │
+│ 04   │ Alpes-de-Haute-Provence │ Digne-les-Bains      │ Provence-Alpes-Côte d'Azur │
+│ 05   │ Hautes-Alpes            │ Gap                  │ Provence-Alpes-Côte d'Azur │
+│ 06   │ Alpes-Maritimes         │ Nice                 │ Provence-Alpes-Côte d'Azur │
+│ 07   │ Ardèche                 │ Privas               │ Auvergne-Rhône-Alpes       │
+│ 08   │ Ardennes                │ Charleville-Mézières │ Grand Est                  │
+│ 09   │ Ariège                  │ Foix                 │ Occitanie                  │
 │ 10   │ Aube                    │ Troyes               │ Grand Est                  │
 │ 11   │ Aude                    │ Carcassonne          │ Occitanie                  │
 │ 12   │ Aveyron                 │ Rodez                │ Occitanie                  │

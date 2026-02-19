@@ -1,0 +1,10 @@
+┌──────┬────────────────┬─────────────┐
+│ code │      nom       │ prefecture  │
+├──────┼────────────────┼─────────────┤
+│ 18   │ Cher           │ Bourges     │
+│ 28   │ Eure-et-Loir   │ Chartres    │
+│ 36   │ Indre          │ Châteauroux │
+│ 37   │ Indre-et-Loire │ Tours       │
+│ 41   │ Loir-et-Cher   │ Blois       │
+│ 45   │ Loiret         │ Orléans     │
+└──────┴────────────────┴─────────────┘

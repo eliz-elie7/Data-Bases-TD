@@ -1,0 +1,22 @@
+┌────────────────────────────┬───────────┐
+│            nom             │ nbVoisins │
+├────────────────────────────┼───────────┤
+│ Centre-Val de Loire        │ 6         │
+│ Normandie                  │ 5         │
+│ Ile-de-France              │ 5         │
+│ Auvergne-Rhône-Alpes       │ 5         │
+│ Pays de la Loire           │ 4         │
+│ Nouvelle-Aquitaine         │ 4         │
+│ Bourgogne-Franche-Comté    │ 4         │
+│ Occitanie                  │ 3         │
+│ Hauts-de-France            │ 3         │
+│ Grand Est                  │ 3         │
+│ Provence-Alpes-Côte d'Azur │ 2         │
+│ Bretagne                   │ 2         │
+│ Mayotte                    │ 0         │
+│ Martinique                 │ 0         │
+│ La Réunion                 │ 0         │
+│ Guyane                     │ 0         │
+│ Guadeloupe                 │ 0         │
+│ Corse                      │ 0         │
+└────────────────────────────┴───────────┘
