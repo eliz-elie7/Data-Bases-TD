@@ -141,3 +141,21 @@ LEFT JOIN regions r ON d.rid = r.rid
 LEFT JOIN zus z ON d.nom = z.departement
 GROUP BY d.nom
 ORDER BY nbZus DESC;
+
+/* Requête 11 (question 13)*/
+.output 'res/req11.txt'
+SELECT r.nom AS region, COUNT(z.departement) AS nbZus
+FROM regions r
+LEFT JOIN departements d ON r.rid = d.rid
+LEFT JOIN zus z ON d.nom = z.departement
+GROUP BY r.nom
+ORDER BY nbZus DESC;
+
+/* Requête 12 (question 14)*/
+.output 'res/req12.txt'
+SELECT r.nom AS region
+FROM regions r
+LEFT JOIN departements d ON r.rid = d.rid
+LEFT JOIN zus z ON d.nom = z.departement
+GROUP BY r.nom
+HAVING COUNT(z.departement) > 0;
