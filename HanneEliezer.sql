@@ -177,3 +177,34 @@ select d.nom ,r.nom as region , 0 as nombre_zus
 from departements d , regions r
 where d.rid=r.rid and d.nom not in (select departement from zus)
 order by nombre_zus desc ;
+
+/* question 13 */
+select r.nom as region , count(*) as nombre_zus
+from regions r,zus z,departements d
+where z.departement=d.nom and d.rid=r.rid
+group by r.nom
+order by nombre_zus desc ;
+
+/*question 14*/
+/*version 1*/
+select r.nom as region 
+from regions r,departements d, zus z
+where z.departement=d.nom and d.rid=r.rid 
+group by r.nom
+having count(distinct d.nom) = (
+    select count(*) 
+    from departements d2
+    where d2.rid = r.rid
+);
+/*version 2*/
+select r.nom 
+from regions r
+where not exists (
+    select * 
+    from departements d
+    where d.rid = r.rid
+    and not exists (
+        select * 
+        from zus z
+        where z.departement = d.nom)
+);
