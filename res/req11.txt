@@ -1,0 +1,22 @@
+┌────────────────────────────┬───────┐
+│           region           │ nbZus │
+├────────────────────────────┼───────┤
+│ Ile-de-France              │ 157   │
+│ Hauts-de-France            │ 94    │
+│ Grand Est                  │ 88    │
+│ Auvergne-Rhône-Alpes       │ 81    │
+│ Provence-Alpes-Côte d'Azur │ 48    │
+│ Bourgogne-Franche-Comté    │ 45    │
+│ Occitanie                  │ 42    │
+│ Nouvelle-Aquitaine         │ 41    │
+│ Normandie                  │ 37    │
+│ Centre-Val de Loire        │ 30    │
+│ Pays de la Loire           │ 29    │
+│ Bretagne                   │ 20    │
+│ La Réunion                 │ 15    │
+│ Guadeloupe                 │ 8     │
+│ Martinique                 │ 6     │
+│ Corse                      │ 5     │
+│ Guyane                     │ 4     │
+│ Mayotte                    │ 1     │
+└────────────────────────────┴───────┘

@@ -1,0 +1,18 @@
+┌─────────────────────────┐
+│         region          │
+├─────────────────────────┤
+│ Bourgogne-Franche-Comté │
+│ Bretagne                │
+│ Centre-Val de Loire     │
+│ Corse                   │
+│ Grand Est               │
+│ Guadeloupe              │
+│ Guyane                  │
+│ Hauts-de-France         │
+│ Ile-de-France           │
+│ La Réunion              │
+│ Martinique              │
+│ Mayotte                 │
+│ Normandie               │
+│ Pays de la Loire        │
+└─────────────────────────┘

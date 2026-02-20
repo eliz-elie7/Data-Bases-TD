@@ -151,11 +151,25 @@ LEFT JOIN zus z ON d.nom = z.departement
 GROUP BY r.nom
 ORDER BY nbZus DESC;
 
-/* Requête 12 (question 14)*/
+/* Requête 12 (question 14 - version 1)*/
 .output 'res/req12.txt'
 SELECT r.nom AS region
 FROM regions r
-LEFT JOIN departements d ON r.rid = d.rid
-LEFT JOIN zus z ON d.nom = z.departement
+WHERE NOT EXISTS(
+  SELECT *
+  FROM departements d
+  WHERE d.rid = r.rid AND NOT EXISTS(
+    SELECT *
+    FROM zus z
+    WHERE z.departement = d.nom
+  )
+);
+
+/* Requête 13 (question 14 - version 2)*/
+.output 'res/req13.txt'
+SELECT r.nom AS region
+FROM regions r
+JOIN departements d ON r.rid = d.rid
+JOIN zus z ON d.nom = z.departement
 GROUP BY r.nom
-HAVING COUNT(z.departement) > 0;
+HAVING COUNT(DISTINCT d.nom) >= (SELECT COUNT(*) FROM departements d2 WHERE d2.rid = r.rid);
