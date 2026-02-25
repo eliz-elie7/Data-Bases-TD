@@ -112,6 +112,17 @@ CREATE TABLE zus (
   foreign key (departement) references departements(nom)
 );
 
+/*
+  Les données sous forme de HTML et avec un tableau Excel sont brutes.
+  Elles ne sont pas bien structurées et nous seront difficiles à manipuler au niveau de notre
+  base de données. Il faudra les épurer et les structurer pour les rendre facilement exploitables.
+*/
+/*
+  Pour respecter la contrainte de FOREIGN KEY pour l'attribut "departement" dans la table zus,
+  qui se réfère à l'attribut "nom" dans la table  departements , on ajoute la contrainte UNIQUE
+  à l'attribut "nom" de la table departements.
+*/
+
 .separator ';'
 
 .import 'dept-files/zus.csv' zus
@@ -121,6 +132,18 @@ CREATE TABLE zus (
 SELECT *
 FROM zus
 WHERE commune LIKE '%(%)%';
+
+/*
+  Ce format de stockage de données est ambigüe et non structuré. Cela ne nous facilite pas
+  l'exploitation des données pour les manipuler. En plus, on ne sait pas quels sont
+  les autres departements auxquels ces quartiers et communes sont associés.
+  Il faudra fastidieusement vérifier au niveau de la table departements pour savoir.
+  (Requête difficile avec les jointures).
+  On note aussi la violation du principe d'atomicité (le champ commune doit etre indivisible ).
+
+  Comment aurions-nous fait ? Nous aurions scinder la ligne en 2 colonnes, l'une avec son departement sa commune
+  et le meme quartier de même que l'autre : (Essonne, "Massy", "Le Grand Ensemble").
+*/
 
 /* Question 11)*/
 .output 'res/req9.txt'
