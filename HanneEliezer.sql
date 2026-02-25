@@ -1,7 +1,9 @@
 /*-------------------------
   Partie 1 du TD
+  Binôme : El Hadji Oumar Hanne & Eliezer Mahugnon DJIHINTO
 --------------------------*/
 
+/* Question 1)*/
 .mode box
 PRAGMA foreign_keys = on;
 
@@ -29,20 +31,20 @@ CREATE TABLE departements (
 
 .import 'dept-files/departements.csv' departements
 
-/* Requête 1 (question 2)*/
+/* Question 2)*/
 .output 'res/req1.txt'
 SELECT code, nom
 FROM departements
 WHERE prefecture = 'Bourges';
 
-/* Requête 2 (question 3)*/
+/* Question 3)*/
 .output 'res/req2.txt'
 SELECT code, d.nom, prefecture, r.nom AS region
 FROM departements d
 JOIN regions r
 ON d.rid = r.rid;
 
-/* Requête 3 (question 4)*/
+/* Question 4)*/
 .output 'res/req3.txt'
 SELECT r.nom AS region, chefLieu, code, d.nom AS departement, prefecture
 FROM regions r
@@ -50,7 +52,7 @@ JOIN departements d
 ON r.rid = d.rid
 ORDER BY r.nom;
 
-/* Requête 4 (question 5)*/
+/* Question 5)*/
 .output 'res/req4.txt'
 SELECT code, d.nom, prefecture
 FROM departements d
@@ -58,7 +60,7 @@ JOIN regions r
 ON d.rid = r.rid
 WHERE r.nom = 'Centre-Val de Loire';
 
-/* Question 6*/
+/* Question 6)*/
 DROP TABLE IF EXISTS voisins;
 CREATE TABLE voisins (
   rid1 char(5),
@@ -70,12 +72,12 @@ CREATE TABLE voisins (
 
 .import 'dept-files/voisins.csv' voisins
 
-/* Requête 5 (question 6)*/
+/* Requête */
 .output 'res/req5.txt'
 SELECT COUNT(*)
 FROM voisins;
 
-/* Requête 6 (question 7)*/
+/* Question 7)*/
 .output 'res/req6.txt'
 DROP VIEW IF EXISTS voisinsSym;
 CREATE VIEW voisinsSym AS
@@ -87,7 +89,7 @@ FROM voisins;
 SELECT COUNT(*) AS nbVoisinsSym
 FROM voisinsSym;
 
-/* Requête 7 (question 8)*/
+/* Question 8)*/
 .output 'res/req7.txt'
 DROP VIEW IF EXISTS voisinsSymNoms;
 CREATE VIEW voisinsSymNoms AS
@@ -114,13 +116,13 @@ CREATE TABLE zus (
 
 .import 'dept-files/zus.csv' zus
 
-/* Requête 8 (question 10)*/
+/* Question 10)*/
 .output 'res/req8.txt'
 SELECT *
 FROM zus
 WHERE commune LIKE '%(%)%';
 
-/* Requête 9 (question 11)*/
+/* Question 11)*/
 .output 'res/req9.txt'
 DROP VIEW IF EXISTS ZusComPrefDep;
 CREATE VIEW ZusComPrefDep AS
@@ -133,7 +135,7 @@ SELECT
 (SELECT COUNT(*) FROM ZusComPrefDep) AS nbZusComInPref,
 (SELECT COUNT(*) FROM Zus) - (SELECT COUNT(*) FROM ZusComPrefDep) AS nbZUSNotInPref;
 
-/* Requête 10 (question 12)*/
+/* Question 12)*/
 .output 'res/req10.txt'
 SELECT d.nom AS departement, r.nom AS region, COUNT(z.departement) AS nbZus
 FROM departements d
@@ -142,7 +144,7 @@ LEFT JOIN zus z ON d.nom = z.departement
 GROUP BY d.nom
 ORDER BY nbZus DESC;
 
-/* Requête 11 (question 13)*/
+/* Question 13)*/
 .output 'res/req11.txt'
 SELECT r.nom AS region, COUNT(z.departement) AS nbZus
 FROM regions r
@@ -151,7 +153,7 @@ LEFT JOIN zus z ON d.nom = z.departement
 GROUP BY r.nom
 ORDER BY nbZus DESC;
 
-/* Requête 12 (question 14 - version 1)*/
+/* Question 14 - version 1)*/
 .output 'res/req12.txt'
 SELECT r.nom AS region
 FROM regions r
@@ -165,11 +167,14 @@ WHERE NOT EXISTS(
   )
 );
 
-/* Requête 13 (question 14 - version 2)*/
+/* Question 14 - version 2)*/
 .output 'res/req13.txt'
 SELECT r.nom AS region
 FROM regions r
 JOIN departements d ON r.rid = d.rid
 JOIN zus z ON d.nom = z.departement
 GROUP BY r.nom
-HAVING COUNT(DISTINCT d.nom) >= (SELECT COUNT(*) FROM departements d2 WHERE d2.rid = r.rid);
+HAVING COUNT(DISTINCT d.nom) = (
+  SELECT COUNT(*)
+  FROM departements d2
+  WHERE d2.rid = r.rid);
