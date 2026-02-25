@@ -89,6 +89,11 @@ FROM voisins;
 SELECT COUNT(*) AS nbVoisinsSym
 FROM voisinsSym;
 
+/*
+  Dans la table , on remarque que les couples de voisins ne sont pas symetriques
+  (pour chaque tuple (rid1,rid2) il n'y a pas de tuple (rid2,rid1) associés )
+  */
+
 /* Question 8)*/
 .output 'res/req7.txt'
 DROP VIEW IF EXISTS voisinsSymNoms;
