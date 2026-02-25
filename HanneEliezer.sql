@@ -152,10 +152,10 @@ CREATE VIEW ZusComPrefDep AS
 SELECT *
 FROM zus z
 JOIN departements d ON z.departement = d.nom
-WHERE z.commune = d.prefecture;
+WHERE z.commune LIKE '%' || d.prefecture || '%' OR d.prefecture LIKE '%' || z.commune || '%';
 SELECT
 (SELECT COUNT(*) FROM Zus) AS Total,
-(SELECT COUNT(*) FROM ZusComPrefDep) AS nbZusComInPref,
+(SELECT COUNT(*) FROM ZusComPrefDep) AS nbZusComPref,
 (SELECT COUNT(*) FROM Zus) - (SELECT COUNT(*) FROM ZusComPrefDep) AS nbZUSNotInPref;
 
 /* Question 12)*/
